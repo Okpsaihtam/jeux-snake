@@ -17,6 +17,7 @@ let direction = { x: 1, y: 0 };
 let nourriture = { x: 5, y: 5 };
 let score = 0;
 let gameloop = null;
+let prochainDirection = { x:1, y:0 };
 
 function dessinerFond() {
     ctx.fillStyle = '#1a1a2e';
@@ -56,6 +57,7 @@ function dessiner() {
 }
 
 function bouger() {
+    direction = prochainDirection;
     const tete = {
         x: serpent[0].x + direction.x,
         y:serpent[0].y + direction.y
@@ -82,7 +84,7 @@ function bouger() {
 
     if (tete.x === nourriture.x && tete.y === nourriture.y) {
         score++;
-        scoreEl.texteContent = 'Score : ' + score;
+        scoreEl.textContent = 'Score : ' + score;
         placerNourriture();
     } else {
         serpent.pop();
@@ -108,22 +110,23 @@ btnRejouer.addEventListener('click', () => {
 
 document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowUp' && direction.y !== 1) {
-        direction = { x: 0, y: -1 };
+        prochainDirection = { x: 0, y: -1 };
     }
     if (event.key === 'ArrowDown' && direction.y !== -1) {
-        direction = { x: 0, y: 1 };
+        prochainDirection = { x: 0, y: 1 };
     }
     if (event.key === 'ArrowLeft' && direction.x !== 1) {
-        direction = { x: -1, y: 0 };
+        prochainDirection = { x: -1, y: 0 };
     }
     if (event.key === 'ArrowRight' && direction.x !== -1) {
-        direction = { x: 1, y: 0 };
+        prochainDirection = { x: 1, y: 0 };
     }
 });
 
 function demarrer() {
     serpent = [{ x: 10, y: 10 }];
     direction = { x: 1, y: 0 };
+    prochainDirection = { x: 1, y: 0 };
     score = 0;
     scoreEl.textContent = 'Score : 0';
     messageEl.textContent = '';
