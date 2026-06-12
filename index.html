@@ -11,9 +11,34 @@
             <h1>Snake</h1>
             <p id="score">Score : 0</p>
             <p id="record">Record : 0</p>
+            <button id="btnResetRecord">Réinitialiser le record</button>
             <canvas id="gameCanvas" width="400" height="400"></canvas>
             <p id="message"></p>
-            <button id="btnJouer">Jouer</button>
+
+            <div id="menu">
+                <div class="option">
+                    <p class="option-titre">Couleur du serpent</p>
+                    <div class="choix-couleur">
+                        <button class="btnCouleur selectionne" data-couleur="#7c3aed" style="background:#7c3aed"></button>
+                        <button class="btnCouleur" data-couleur="#16a34a" style="background:#16a34a"></button>
+                        <button class="btnCouleur" data-couleur="#dc2626" style="background:#dc2626"></button>
+                        <button class="btnCouleur" data-couleur="#2563eb" style="background:#2563eb"></button>
+                    </div>
+                </div>
+
+                <div class="option">
+                    <p class="option-titre">Forme du serpent</p>
+                    <div class="choix-forme">
+                        <button class="btnForme selectionne" data-forme="carre">Carré</button>
+                        <button class="btnForme" data-forme="pacman">Pacman</button>
+                        <button class="btnForme" data-forme="triangle">Triangle</button>
+                        <button class="btnForme" data-forme="diamant">Diamant</button>
+                    </div>
+                </div>
+
+                <button id="btnJouer">Jouer</button>
+            </div>
+
             <button id="btnRejouer">Rejouer</button>
         </div>
 

@@ -69,3 +69,88 @@ button:hover {
 #btnRejouer {
     display: none;
 }
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.option {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.option-titre {
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.choix-couleur {
+    display: flex;
+    gap: 10px;
+}
+
+.btnCouleur {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid trasparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btnCouleur.selectionne {
+    border: 3px solid #ffffff;
+}
+
+.choix-forme {
+    display: flex;
+    gap: 8px;
+}
+
+.btnForme {
+    padding : 6px 14px;
+    font-size: 13px;
+    background-color: transparent;
+    color: #c4b5fd;
+    border: 2px solid #7c3aed;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btnForme.selectionne {
+    background-color: #7c3aed;
+    color: #ffffff;
+}
+
+.btnForme:hover {
+    background-color: #6d28d9;
+    color: #ffffff;
+}
+
+#btnResetRecord {
+    padding: 4px 12px;
+    font-size: 11px;
+    background-color: transparent;
+    color: #666;
+    border: 1px solid #444;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#btnResetRecord:hover {
+    background-color: #dc2626;
+    color: #ffffff;
+    border-color: #dc2626;
+}
