@@ -1,6 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const scoreEl = document.getElementById('score');
+const recordEl = document.getElementById('record');
 const messageEl = document.getElementById('message');
 const btnJouer = document.getElementById('btnJouer');
 const btnRejouer = document.getElementById('btnRejouer');
@@ -16,6 +17,8 @@ let serpent = [
 let direction = { x: 1, y: 0 };
 let nourriture = { x: 5, y: 5 };
 let score = 0;
+let record = localStorage.getItem('snakeRecord') ? parseInt(localStorage.getItem('snakeRecord')) : 0;
+recordEl.textContent = 'Record : ' + record;
 let gameloop = null;
 let prochainDirection = { x:1, y:0 };
 
@@ -85,7 +88,17 @@ function bouger() {
     if (tete.x === nourriture.x && tete.y === nourriture.y) {
         score++;
         scoreEl.textContent = 'Score : ' + score;
+        if (score > record) {
+            record = score;
+            recordEl.textContent = 'Record : ' + record;
+            localStorage.setItem('snakeRecord', record);
+        }
         placerNourriture();
+        clearInterval(gameLoop);
+        gameLoop = setInterval(() => {
+            bouger();
+            dessiner();
+        }, calculerVitesse())
     } else {
         serpent.pop();
     }
@@ -123,6 +136,14 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+function calculerVitesse() {
+    if (score < 5) return 150;
+    if (score < 10) return 120;
+    if (score< 20) return 90;
+    if (score < 30) return 60;
+    return 40;
+}
+
 function demarrer() {
     serpent = [{ x: 10, y: 10 }];
     direction = { x: 1, y: 0 };
@@ -134,7 +155,7 @@ function demarrer() {
     gameLoop = setInterval(() =>{
         bouger();
         dessiner();
-    }, 150);
+    }, calculerVitesse());
 }
 
 function gameOver() {
